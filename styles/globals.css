@@ -8,6 +8,7 @@
   --color-green: #3bdf72;
   --color-gray: #b5bdc4;
 }
+
 html,
 body {
   padding: 0;
@@ -91,7 +92,6 @@ code {
 
 .navbar li {
   border-radius: 50%;
-
 }
 
 /* Buttons */

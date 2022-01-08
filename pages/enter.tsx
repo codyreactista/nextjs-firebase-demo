@@ -1,11 +1,12 @@
+import Metatags from "@components/Metatags";
+import { UserContext } from "@lib/context";
+import { auth, firestore, googleAuthProvider } from "@lib/firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { doc, getDoc, writeBatch } from "firebase/firestore";
 import debounce from "lodash.debounce";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { UserContext } from "../lib/context";
-import { auth, firestore, googleAuthProvider } from "../lib/firebase";
 
-export default function Enter(props) {
+export default function Enter() {
   const { user, username } = useContext(UserContext);
 
   // 1. user signed out <SignInButton />
@@ -13,7 +14,7 @@ export default function Enter(props) {
   // 3. user signed in, has username <SignOutButton />
   return (
     <main>
-      {/* <Metatags title="Enter" description="Sign up for this amazing app!" /> */}
+      <Metatags title="Enter" description="Sign up for this amazing app!" />
       {user ? (
         !username ? (
           <UsernameForm />
@@ -81,7 +82,6 @@ function UsernameForm() {
       if (username.length >= 3) {
         const ref = doc(firestore, "usernames", username);
         const snap = await getDoc(ref);
-        console.log("Firestore read executed!");
         setIsValid(!snap.exists());
         setLoading(false);
       }
