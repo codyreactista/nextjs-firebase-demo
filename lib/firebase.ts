@@ -25,10 +25,10 @@ if (!getApps().length) {
   app = initializeApp(firebaseConfig);
 }
 
-export const auth = getAuth(app);
+export const auth = getAuth();
 export const googleAuthProvider = new GoogleAuthProvider();
 
-export const firestore = getFirestore(app);
+export const firestore = getFirestore();
 export const storage = getStorage(app);
 
 // Helper functions
