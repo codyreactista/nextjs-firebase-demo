@@ -1,3 +1,5 @@
+import AuthCheck from "@components/AuthCheck";
+import HeartButton from "@components/HeartButton";
 import Metatags from "@components/Metatags";
 import PostContent from "@components/PostContent";
 import { firestore, getUserWithUsername, postToJSON } from "@lib/firebase";
@@ -9,6 +11,7 @@ import {
   getDoc,
   getDocs,
 } from "firebase/firestore";
+import Link from "next/link";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 
 export default function Post(props) {
@@ -29,6 +32,16 @@ export default function Post(props) {
         <p>
           <strong>{post.heartCount || 0} 🤍</strong>
         </p>
+
+        <AuthCheck
+          fallback={
+            <Link href="/enter" passHref>
+              <button>💗 Sign Up</button>
+            </Link>
+          }
+        >
+          <HeartButton postRef={postRef} />
+        </AuthCheck>
       </aside>
     </main>
   );
