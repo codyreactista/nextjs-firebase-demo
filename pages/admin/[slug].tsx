@@ -32,7 +32,7 @@ function PostManager() {
 
   const postRef = doc(
     collection(doc(firestore, "users", auth.currentUser.uid), "posts"),
-    slug
+    String(slug)
   );
   const [post] = useDocumentDataOnce(postRef);
 
