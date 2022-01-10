@@ -29,7 +29,7 @@ export const auth = getAuth();
 export const googleAuthProvider = new GoogleAuthProvider();
 
 export const firestore = getFirestore();
-export const storage = getStorage(app);
+export const storage = getStorage();
 
 // Helper functions
 
